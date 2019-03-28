@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import {Route, Switch, Redirect } from 'react-router-dom';
 import Nav from './Nav';
 import Home from './Home';
 import Companies from './Companies';
@@ -11,8 +11,7 @@ import Company from './Company';
 export default class Routes extends Component {
     render() {
       return (
-        <BrowserRouter>
-            <Nav />
+        <div>
             <Switch>
                 <Route exact path="/"
                         render={() => <Home />} />
@@ -34,7 +33,7 @@ export default class Routes extends Component {
 
                 <Redirect to="/" />
             </Switch>
-        </BrowserRouter>
+            </div>
       );
     }
   }
