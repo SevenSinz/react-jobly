@@ -9,6 +9,7 @@ export default class Company extends Component {
     this.state = {
       company: {},
       jobs: [],
+      isLoading: true
       // token: ''
     }
     this.getJobsForCompany = this.getJobsForCompany.bind(this);
@@ -25,7 +26,7 @@ export default class Company extends Component {
     const company = response.company;
     const jobs = response.company.jobs;
 
-    this.setState({ company, jobs })
+    this.setState({ company, jobs})
   }
 
   async componentDidMount() {
@@ -58,6 +59,6 @@ export default class Company extends Component {
         </div>
       );
     }
-    return <div> HI </div>
+    return <div>LOADING.. </div>
   }
 }
