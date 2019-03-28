@@ -2,13 +2,9 @@ import axios from 'axios';
 
 export default class JoblyApi {
     static async request(endpoint, paramsOrData = {}, verb = "get") {
-      console.log('paramsOrdata=', paramsOrData);
-      paramsOrData._token = ( 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE1NTM3MjgxNzB9.kBW6MLbT8cyJj83zTrbuzJyWscdDMZ0RHO-ngREg8U0')
-      //  // for now, hardcode token for "testing"
-      // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" +
-      // "eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE1NTM3MjgxNzB9" +
-      // "kBW6MLbT8cyJj83zTrbuzJyWscdDMZ0RHO-ngREg8U0");
 
+      // Get the token from localStorage and save it as __token in the params for the request call
+      paramsOrData._token = localStorage.getItem("token")
       
       console.debug("API Call:", endpoint, paramsOrData, verb);
   
@@ -42,6 +38,17 @@ export default class JoblyApi {
     static async getJobs(search) {
       let res = await this.request(`jobs`, search);
       return res.jobs;
+    }
+
+    static async login(loginInfo) {
+      let res = await this.request('login', loginInfo, "post");
+      localStorage.setItem("token", res.token);
+      return res.token;
+    }
+
+    static async getUserInfo(username) {
+      let res = await this.request(`users/${username}`);
+      return res.user;
     }
  
 }

@@ -9,27 +9,29 @@ import Company from './Company';
 import Companies from './Companies';
 
 export default class Routes extends Component {
+
     render() {
       return (
         <div>
             <Switch>
                 <Route exact path="/"
-                        render={() => <Home />} /> 
+                        render={() => <Home currentUser={this.props.currentUser} />} /> 
 
                 <Route exact path="/companies"
-                        render={rtProps => <Companies {...rtProps} />} />
+                        render={() => <Companies currentUser={this.props.currentUser}/>} />
 
                 <Route exact path="/companies/:handle"
-                        render={rtProps => <Company {...rtProps} />} />
+                        render={rtProps => <Company {...rtProps} currentUser={this.props.currentUser}/>} />
 
                 <Route exact path="/jobs"
-                        render={() => <Jobs />} />
+                        render={() => <Jobs currentUser={this.props.currentUser}/>} />
 
                 <Route exact path="/login"
-                        render={() => <Login />} />
+                        render={() => <Login handleUserLogin= {this.props.handleUserLogin} 
+                        currentUser={this.props.currentUser} />} />
 
                 <Route exact path="/profile"
-                        render={() => <Profile />} />
+                        render={() => <Profile currentUser={this.props.currentUser}/>} />
 
                 <Redirect to="/" />
             </Switch>

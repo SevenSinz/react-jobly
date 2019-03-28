@@ -15,7 +15,7 @@ export default class Company extends Component {
     this.getJobsForCompany = this.getJobsForCompany.bind(this);
   }
 
-  async
+
 // FIXME:
 //   applyToJob() {
 //   }
@@ -26,7 +26,7 @@ export default class Company extends Component {
     const company = response.company;
     const jobs = response.company.jobs;
 
-    this.setState({ company, jobs})
+    this.setState({ company, jobs, isLoading: false})
   }
 
   async componentDidMount() {
@@ -49,7 +49,7 @@ export default class Company extends Component {
     )
     )
 
-    if (this.state.company && this.state.company.name) {
+    if (!this.state.isLoading) {
 
       return (
         <div>
@@ -59,6 +59,6 @@ export default class Company extends Component {
         </div>
       );
     }
-    return <div>LOADING.. </div>
+    return <div>LOADING...</div>
   }
 }
