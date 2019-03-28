@@ -29,15 +29,20 @@ export default class JoblyApi {
       }
     }
     
-    // static async getCompany(handle) {
-    //     let res = await this.request(`companies/${handle}`);
-    //     return res.company;
-    // }
+    static async getCompanyAndJobs(handle) {
+        let res = await this.request(`companies/${handle}`);
+        return res.company;
+    }
 
     static async getCompanies(search) {
       let res = await this.request('companies', search);
       return res.companies;
   }
+
+  //   static async getJobs(search) {
+  //     let res = await this.request(`companies/${}`, search);
+  //     return res.companies;
+  // }
 
     // static async 
 }

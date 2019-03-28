@@ -14,7 +14,7 @@ export default class Routes extends Component {
         <div>
             <Switch>
                 <Route exact path="/"
-                        render={() => <Home />} />
+                        render={() => <Home />} /> 
 
                 <Route exact path="/companies"
                         render={rtProps => <Companies {...rtProps} />} />
