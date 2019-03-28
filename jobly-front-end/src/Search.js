@@ -25,6 +25,7 @@ export default class Search extends Component {
     return (
       <div> 
       <form onSubmit={this.handleSubmit}>
+        <label htmlFor="search">Search</label>
         <input  id='search' 
                 name='search' 
                 value={this.state.search}
