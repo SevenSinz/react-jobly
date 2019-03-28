@@ -4,14 +4,13 @@ import JobCard from './JobCard';
 
 export default class Company extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       company: {},
       jobs: [],
       // token: ''
     }
-
     this.getJobsForCompany = this.getJobsForCompany.bind(this);
   }
 

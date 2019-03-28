@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
-export default class Search extends Component {
-  constructor(){
-    super()
+constructor(props) {
+  super(props);
     this.state={
       search:''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
   }
 
   handleSubmit(evt){

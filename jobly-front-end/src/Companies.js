@@ -8,8 +8,8 @@ import JoblyApi from './JoblyApi';
 
 export default class Companies extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       companies: [],
       // token: ''
