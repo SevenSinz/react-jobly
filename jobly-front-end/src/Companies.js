@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import CompanyCard from './CompanyCard';
 import {Link} from 'react-router-dom';
+import uuid from 'uuid/v4';
+
+import CompanyCard from './CompanyCard';
 import Search from './Search';
 import JoblyApi from './JoblyApi';
-import uuid from 'uuid/v4';
 
 export default class Companies extends Component {
 
@@ -11,17 +12,14 @@ export default class Companies extends Component {
     super();
     this.state = {
       companies: [],
-      // search: "",
       // token: ''
     }
     this.getCompanies = this.getCompanies.bind(this);
     this.searchCompanies = this.searchCompanies.bind(this);
-
   } 
 
   async getCompanies(search) {
     let companies = await JoblyApi.getCompanies(search);
-    // console.log("companies = ", companies);
     this.setState({ companies });
 
   }
@@ -36,11 +34,12 @@ export default class Companies extends Component {
 
   render() {
     let companies = this.state.companies.map(c => <div><Link to={`/companies/${c.handle}`} ><CompanyCard
-      key= {uuid()}
-      handle={c.handle}
-      name={c.name}
-      description={c.description}
-      logo_url={c.logo_url} /></Link></div>)
+                key= {uuid()}
+                handle={c.handle}
+                name={c.name}
+                description={c.description}
+                logo_url={c.logo_url} 
+                /></Link></div>)
     return (
       <div>
         <Search triggerSearch={this.searchCompanies} />
