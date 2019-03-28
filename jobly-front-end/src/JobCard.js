@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-
+import './JobCard.css'
 
 export default class JobCard extends Component {
   render() {
     return (
-      <div>
+      <div className="JobCard">
         <h3>{this.props.title}</h3>
         <p>
           <b>Salary:</b><span> ${this.props.salary}</span>
@@ -13,7 +13,7 @@ export default class JobCard extends Component {
           <b>Equity: </b><span> {this.props.equity}</span>
         </p>
         <br />
-        <button onClick={this.triggerApply}>Apply</button>
+        <button className="applybutton" onClick={this.triggerApply}>Apply</button>
       </div>
     );
   }
