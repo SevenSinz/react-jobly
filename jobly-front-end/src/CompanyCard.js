@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './CompanyCard.css'
 
 export default class CompanyCard extends Component {
 
   render() {
     return (
-      <div className="card"> 
+      <div className="CompanyCard"> 
         <img src={this.props.logo_url} alt='company logo'/>
         <div className="container"> 
           <h4><b>{this.props.name}</b></h4>
@@ -14,3 +15,4 @@ export default class CompanyCard extends Component {
     );
   }
 }
+

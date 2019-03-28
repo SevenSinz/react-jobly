@@ -43,7 +43,7 @@ export default class Companies extends Component {
     return (
       <div>
         <Search triggerSearch={this.searchCompanies} />
-        {companies}
+        { companies }
       </div>
     );
   }

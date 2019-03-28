@@ -2,37 +2,32 @@ import React, { Component } from 'react';
 import JoblyApi from './JoblyApi';
 import JobCard from './JobCard';
 
-/** THESE ARE THE THINGS THAT ARE COMING IN AS PROPS */
-// key= {uuid()}
-// handle={c.handle}
-// name={c.name}
-// description={c.description}
-// logo_url={c.logo_url} /></Link></div>
-
 export default class Company extends Component {
 
   constructor() {
     super();
     this.state = {
+      company: {},
       jobs: [],
-      // search: "",
       // token: ''
     }
 
     this.getJobsForCompany = this.getJobsForCompany.bind(this);
-
   }
+
+  async
 // FIXME:
 //   applyToJob() {
-
 //   }
 
   async getJobsForCompany() {
     const response = await JoblyApi.getCompanyAndJobs(this.props.match.params.handle)
-    const jobs = response.jobs
-    this.setState({ jobs })
-  }
+    console.log("response = ", response);
+    const company = response.company;
+    const jobs = response.company.jobs;
 
+    this.setState({ company, jobs })
+  }
 
   async componentDidMount() {
     await this.getJobsForCompany()
@@ -54,12 +49,16 @@ export default class Company extends Component {
     )
     )
 
-    return (
-      <div>
-        <h4><b>{this.props.name}</b></h4>
-        <p>{this.props.description}</p>
-        {jobs}
-      </div>
-    );
+    if (this.state.company && this.state.company.name) {
+
+      return (
+        <div>
+          <h4><b>{this.state.company.name}</b></h4>
+              <p>{this.state.company.description}</p>
+          { jobs }
+        </div>
+      );
+    }
+    return <div> HI </div>
   }
 }

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Route, Switch, Redirect } from 'react-router-dom';
-import Nav from './Nav';
+
 import Home from './Home';
-import Companies from './Companies';
 import Jobs from './Jobs';
 import Login from './Login';
 import Profile from './Profile';
 import Company from './Company';
+import Companies from './Companies';
 
 export default class Routes extends Component {
     render() {
