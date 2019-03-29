@@ -11,7 +11,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: {}
+      currentUser: null
     }
     this.logOut = this.logOut.bind(this);
     this.setCurrentUser = this.setCurrentUser.bind(this);
@@ -42,11 +42,11 @@ export default class App extends Component {
 
   logOut(){
     localStorage.clear();
-    this.setState({currentUser: {}})
+    this.setState({currentUser: null})
   }
 
-  componentDidMount(){
-    this.setCurrentUser()
+  async componentDidMount(){
+    await this.setCurrentUser()
   }
 
   render() {

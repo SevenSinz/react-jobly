@@ -18,11 +18,11 @@ export default class Nav extends Component {
           <NavLink key='companies' to='/companies'> Companies </NavLink>
           <NavLink key='jobs' to='/jobs'> Jobs </NavLink>
           <NavLink key='profile' to='/profile'> Profile </NavLink>
-          <Link onClick={this.props.handleLogout}> Logout </Link>
+          <Link to='/' onClick={this.props.handleLogout}> Logout </Link>
         </nav>
       </div>)
 
-    if (this.props.currentUser.username === undefined) return login;
+    if (this.props.currentUser === null) return login;
     return logout;
   }
 }

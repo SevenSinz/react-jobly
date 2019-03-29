@@ -35,8 +35,7 @@ export default class Routes extends Component {
                         render={rtProps => <Login 
                                 {...rtProps}
                                 currentUser={this.props.currentUser} 
-                                handleSetCurrentUser={this.props.handleSetCurrentUser} 
-                                />} />
+                                handleSetCurrentUser={this.props.handleSetCurrentUser}/>} />
 
                 <Route exact path="/profile"
                         render={() => <Profile 

@@ -36,7 +36,7 @@ export default class Login extends Component {
         let loginres = await JoblyApi.login(this.state);
         console.log("loginres =", loginres)
       }
-      this.props.handleSetCurrentUser();
+      await this.props.handleSetCurrentUser();
       this.props.history.push('/');
 
       this.setState({
