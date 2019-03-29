@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import JoblyApi from './JoblyApi';
 import './Login.css'
+import Alert from './Alert';
 
 export default class Login extends Component {
 
@@ -14,7 +15,7 @@ export default class Login extends Component {
       last_name:"",
       email:"",
       loginOrSignup: "login",
-      //TODO: alertStatus: false
+      alertMessage: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -28,7 +29,8 @@ export default class Login extends Component {
 
   async handleSubmit(evt){
     evt.preventDefault();
-
+  
+    try {
       if (this.state.loginOrSignup === "signup") {
         let signupres = await JoblyApi.signup(this.state);  
         console.log("signupres =", signupres)
@@ -38,6 +40,11 @@ export default class Login extends Component {
       }
       await this.props.handleSetCurrentUser();
       this.props.history.push('/');
+    } catch(err) {
+      this.setState({
+        alertMessage: err
+      }, ()=>{ console.log("THIS IS THE ALERT MESSAGE", this.state.alertMessage)})
+    }
 
       this.setState({
         username: "",
@@ -131,16 +138,26 @@ export default class Login extends Component {
                     </div>
     )
     
-    if (this.state.loginOrSignup === "signup") {
-      return (<>
-          {loginOrSignup}
-          {signup}
-        </>)
-    } else {
+    let alertMsg;
+
+      if (this.state.alertMessage !== null) {
+        alertMsg = this.state.alertMessage.map((a,id) => <Alert key={id} alertMessage={a} /> )
+      }
+
+    // console.log("THIS IS THE ALERT MESSAGE RIGHT BEFORE RENDERING", alertMsg)
+    
+      if (this.state.loginOrSignup === "signup") {
         return (<>
-          {loginOrSignup}
-          {login}
-        </>)
-    }
+            {loginOrSignup}
+            {signup}
+            {alertMsg}
+          </>)
+      } else {
+          return (<>
+            {loginOrSignup}
+            {login}
+            {alertMsg}
+          </>)
+      }
     } 
 }

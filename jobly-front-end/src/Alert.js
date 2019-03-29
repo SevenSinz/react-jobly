@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
-export default class Alert extends Component {
+class Alert extends Component {
   render() {
     return (
-      <div> alert 'invalid' </div>
+      <div className="Alert">Message: {this.props.alertMessage}</div>
     );
   }
 }
+
+
+export default Alert;

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export default class JoblyApi {
+
     static async request(endpoint, paramsOrData = {}, verb = "get") {
 
       // Get the token from localStorage and save it as __token in the params for the request call
@@ -21,6 +22,7 @@ export default class JoblyApi {
       catch(err) {
         console.error("API Error:", err.response);
         let message = err.response.data.message;
+        // console.log("THIS IS THE MESSAGE IN JOBLY", message)
         throw Array.isArray(message) ? message : [message];
       }
     }
