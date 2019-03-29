@@ -13,29 +13,32 @@ export default class Login extends Component {
       first_name:"",
       last_name:"",
       email:"",
+      loginOrSignup: "login",
       //TODO: alertStatus: false
-      signupShowing: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.toggleShow = this.toggleShow.bind(this);
+    this.setLoginOrSignup = this.setLoginOrSignup.bind(this);
   }
 
-  toggleShow(){
-    this.setState({signupShowing: !this.state.signupShowing})
+  setLoginOrSignup(status){
+    if (status==="signup") this.setState({loginOrSignup: "signup"})
+    else this.setState({loginOrSignup: "login"})
   }
 
   async handleSubmit(evt){
     evt.preventDefault();
 
-      if (this.state.signupShowing) {
-        let signupres = await JoblyApi.signup(this.state);
-        console.log("signupres = ", signupres)
-  
+      if (this.state.loginOrSignup === "signup") {
+        let signupres = await JoblyApi.signup(this.state);  
+        console.log("signupres =", signupres)
       } else {
         let loginres = await JoblyApi.login(this.state);
-        console.log("loginres = ",loginres)
+        console.log("loginres =", loginres)
       }
+      this.props.handleSetCurrentUser();
+      this.props.history.push('/');
+
       this.setState({
         username: "",
         password: "",
@@ -46,18 +49,16 @@ export default class Login extends Component {
   }
 
   handleChange(evt){
-    this.setState({
-      [evt.target.name]: evt.target.value
-    })
+    this.setState({ [evt.target.name]: evt.target.value })
   }
 
   render() {
     const loginOrSignup = (
                           <div className="loginCard">
-                            <button onClick={this.toggleShow}>
+                            <button onClick={() => this.setLoginOrSignup("login")}>
                               Login
                             </button>
-                            <button onClick={this.toggleShow}>
+                            <button onClick={() => this.setLoginOrSignup("signup")}>
                               Signup
                             </button>
                           </div>
@@ -130,15 +131,16 @@ export default class Login extends Component {
                     </div>
     )
     
-    if (this.state.signupShowing) {
+    if (this.state.loginOrSignup === "signup") {
       return (<>
           {loginOrSignup}
           {signup}
         </>)
-    }
+    } else {
         return (<>
           {loginOrSignup}
           {login}
         </>)
+    }
     } 
 }

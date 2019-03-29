@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './Nav.css';
 
 export default class Nav extends Component {
@@ -18,7 +18,7 @@ export default class Nav extends Component {
           <NavLink key='companies' to='/companies'> Companies </NavLink>
           <NavLink key='jobs' to='/jobs'> Jobs </NavLink>
           <NavLink key='profile' to='/profile'> Profile </NavLink>
-          <NavLink key='logout' to='/logout'> Logout </NavLink>
+          <Link onClick={this.props.handleLogout}> Logout </Link>
         </nav>
       </div>)
 

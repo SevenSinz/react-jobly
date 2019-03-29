@@ -24,24 +24,26 @@ export default class Routes extends Component {
 
                 <Route exact path="/companies/:handle"
                         render={rtProps => <Company 
-                                {...rtProps} currentUser={this.props.currentUser}/>} />
+                                {...rtProps} 
+                                currentUser={this.props.currentUser}/>} />
 
                 <Route exact path="/jobs"
                         render={() => <Jobs 
                                 currentUser={this.props.currentUser}/>} />
 
                 <Route exact path="/login"
-                        render={() => <Login 
+                        render={rtProps => <Login 
+                                {...rtProps}
                                 currentUser={this.props.currentUser} 
+                                handleSetCurrentUser={this.props.handleSetCurrentUser} 
                                 />} />
 
                 <Route exact path="/profile"
                         render={() => <Profile 
                                 currentUser={this.props.currentUser}/>} />
                 
-                <Route exact path="/logout"
-                        render={() => <Login 
-                                handlelogout={this.props.handlelogout}/>} />                
+                {/* <Route exact path="/logout"
+                        render={() => <Redirect to="/" handleLogout={this.props.handleLogout}/>} />                 */}
 
                 <Redirect to="/" />
             </Switch>
