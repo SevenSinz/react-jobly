@@ -18,7 +18,7 @@ export default class App extends Component {
 
   }
 
-/** extract token from LocalStorage and make and API call to get currentuser info 
+ /** extract token from LocalStorage and make and API call to get currentuser info 
  * currentUser :
  * {username, first_name, last_name, email, photo_url, jobs: []}
  */
