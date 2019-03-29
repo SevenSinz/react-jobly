@@ -40,6 +40,12 @@ export default class JoblyApi {
       return res.jobs;
     }
 
+    static async signup(signupInfo) {
+      let res = await this.request(`users`, signupInfo, "post");
+      localStorage.setItem("token", res.token);
+      return res.user;
+    }
+
     static async login(loginInfo) {
       let res = await this.request('login', loginInfo, "post");
       localStorage.setItem("token", res.token);
@@ -50,5 +56,7 @@ export default class JoblyApi {
       let res = await this.request(`users/${username}`);
       return res.user;
     }
- 
+
+
+
 }
