@@ -14,7 +14,7 @@ class Login extends Component {
       last_name:"",
       email:"",
       loginOrSignup: "login",
-      alertMessage: null
+      alertMessages: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -37,14 +37,10 @@ class Login extends Component {
         let loginres = await JoblyApi.login(this.state);
         console.log("loginres =", loginres)
       }
+      
       await this.props.handleSetCurrentUser();
       this.props.history.push('/');
-    } catch(err) {
-      this.setState({
-        alertMessage: err
-      }, ()=>{ console.log("THIS IS THE ALERT MESSAGE", this.state.alertMessage)})
-    }
-
+      
       this.setState({
         username: "",
         password: "",
@@ -52,6 +48,13 @@ class Login extends Component {
         last_name:"",
         email:""
       });
+
+    } catch(err) {
+      this.setState({
+        alertMessages: err
+      }, ()=>{ console.log("THIS IS THE ALERT MESSAGE", this.state.alertMessages)})
+    }
+
   }
 
   handleChange(evt){
@@ -139,23 +142,24 @@ class Login extends Component {
                     </div>
     )
     
-    let alertMsg;
+    let alertComponents;
 
-      if (this.state.alertMessage !== null) {
-        alertMsg = this.state.alertMessage.map((a,id) => <Alert key={id} alertMessage={a} /> )
+      if (this.state.alertMessages !== null) {
+        alertComponents = this.state.alertMessages.map(
+          (a,id) => <Alert key={id} alertMessages={a} /> )
       }
 
       if (this.state.loginOrSignup === "signup") {
         return (<>
             {loginOrSignup}
             {signup}
-            {alertMsg}
+            {alertComponents}
           </>)
       } else {
           return (<>
             {loginOrSignup}
             {login}
-            {alertMsg}
+            {alertComponents}
           </>)
       }
     } 

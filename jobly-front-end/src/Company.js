@@ -22,6 +22,14 @@ class Company extends Component {
 
   async getJobsForCompany() {
     const response = await JoblyApi.getCompanyAndJobs(this.props.match.params.handle)
+    
+    // let response;
+    // try {
+    //   response = await JoblyApi.getCompanyAndJobs(this.props.match.params.handle + "xxxx")
+    // } catch (err) {
+    //   console.log("cant get  company", err)
+    // }
+
     console.log("response = ", response);
     const company = response.company;
     const jobs = response.company.jobs;
@@ -36,7 +44,6 @@ class Company extends Component {
   render() {
     console.log(this.state.jobs)
     const jobs = this.state.jobs.map(j => (
-      <div>
         <JobCard 
           key={j.id}
           id={j.id}
@@ -45,7 +52,6 @@ class Company extends Component {
           equity={j.equity} 
           triggerApply={this.applyToJob}
           />
-      </div>
     )
     )
 

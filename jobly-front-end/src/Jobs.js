@@ -31,14 +31,14 @@ class Jobs extends Component {
   }
 
   render() {
-    const jobs = this.state.jobs.map( ({id, title, salary, equity}) => <div>
+    const jobs = this.state.jobs.map( ({id, title, salary, equity}) =>
       <JobCard
         key={ id }
         id={ id }
         title={ title }
         salary={ salary }
         equity={ equity }
-      /></div>)
+      />)
 
     return (
       <div>
