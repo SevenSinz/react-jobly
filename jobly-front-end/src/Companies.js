@@ -6,7 +6,7 @@ import CompanyCard from './CompanyCard';
 import Search from './Search';
 import JoblyApi from './JoblyApi';
 
-export default class Companies extends Component {
+class Companies extends Component {
 
   constructor(props) {
     super(props);
@@ -48,3 +48,5 @@ export default class Companies extends Component {
     );
   }
 }
+
+export default Companies

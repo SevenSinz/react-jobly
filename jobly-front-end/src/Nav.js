@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './Nav.css';
 
-export default class Nav extends Component {
+class Nav extends Component {
   render() {
     const login = (
       <div>
@@ -27,3 +27,4 @@ export default class Nav extends Component {
   }
 }
 
+export default Nav;

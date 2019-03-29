@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import JoblyApi from './JoblyApi';
 import JobCard from './JobCard';
 
-export default class Company extends Component {
+class Company extends Component {
 
   constructor(props) {
     super(props);
@@ -62,3 +62,5 @@ export default class Company extends Component {
     return <div>LOADING...</div>
   }
 }
+
+export default Company

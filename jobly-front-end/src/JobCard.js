@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './JobCard.css'
 
-export default class JobCard extends Component {
+class JobCard extends Component {
   render() {
     return (
       <div className="JobCard">
@@ -18,3 +18,5 @@ export default class JobCard extends Component {
     );
   }
 }
+
+export default JobCard

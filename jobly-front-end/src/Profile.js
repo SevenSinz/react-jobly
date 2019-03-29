@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-export default class Profile extends Component {
+class Profile extends Component {
   render() {
     return (
       <div>We in the Profile</div>
     );
   }
 }
+
+export default Profile

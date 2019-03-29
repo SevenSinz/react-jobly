@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default class JoblyApi {
+class JoblyApi {
 
     static async request(endpoint, paramsOrData = {}, verb = "get") {
 
@@ -58,7 +58,6 @@ export default class JoblyApi {
       let res = await this.request(`users/${username}`);
       return res.user;
     }
-
-
-
 }
+
+export default JoblyApi

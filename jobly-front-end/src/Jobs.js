@@ -5,7 +5,7 @@ import Search from './Search';
 import JoblyApi from './JoblyApi';
 
 
-export default class Jobs extends Component {
+class Jobs extends Component {
 
   constructor(props) {
     super(props);
@@ -48,3 +48,5 @@ export default class Jobs extends Component {
     );
   }
 }
+
+export default Jobs;

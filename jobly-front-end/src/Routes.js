@@ -8,7 +8,7 @@ import Profile from './Profile';
 import Company from './Company';
 import Companies from './Companies';
 
-export default class Routes extends Component {
+class Routes extends Component {
 
     render() {
       return (
@@ -51,3 +51,4 @@ export default class Routes extends Component {
     }
   }
 
+  export default Routes

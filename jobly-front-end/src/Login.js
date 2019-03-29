@@ -3,8 +3,7 @@ import JoblyApi from './JoblyApi';
 import './Login.css'
 import Alert from './Alert';
 
-export default class Login extends Component {
-
+class Login extends Component {
 
   constructor(props) {
     super(props)
@@ -85,6 +84,7 @@ export default class Login extends Component {
                           <div>       
                             <label htmlFor="password"> Password  </label>
                             <input name="password" 
+                                  type="password"
                                   value={this.state.password}
                                   onChange={this.handleChange}
                                   />
@@ -129,6 +129,7 @@ export default class Login extends Component {
                         <div>       
                           <label htmlFor="password">Password  </label>
                           <input name="password" 
+                                type="password"
                                 value={this.state.password}
                                 onChange={this.handleChange}
                                 />
@@ -144,8 +145,6 @@ export default class Login extends Component {
         alertMsg = this.state.alertMessage.map((a,id) => <Alert key={id} alertMessage={a} /> )
       }
 
-    // console.log("THIS IS THE ALERT MESSAGE RIGHT BEFORE RENDERING", alertMsg)
-    
       if (this.state.loginOrSignup === "signup") {
         return (<>
             {loginOrSignup}
@@ -161,3 +160,5 @@ export default class Login extends Component {
       }
     } 
 }
+
+export default Login
